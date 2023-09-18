@@ -1,0 +1,123 @@
+* {
+  padding:0px;
+  margin:0px;
+}
+*:focus {
+  outline:none;
+}
+:root {
+  --main-bg-color:#A6E1FA;
+  --darker-bg-color:#57cdff;
+  --dark-bg-color:#0e101c;
+  --darker-dark-color:#12141f;
+}
+::-webkit-scrollbar {
+  width:0px;
+}
+::-webkit-scrollbar-track {
+  border-radius:10px;
+  background-color:none;
+}
+::placeholder {
+  color:white;
+  opacity:0.7;
+}
+a {
+  text-decoration:none;
+  color:white;
+}
+input::selection {
+  background-color: transparent;
+}
+Body {
+  background-color:black;
+  user-select:none;
+}
+#main-container {
+  justify-content:center;
+  display:flex;
+  margin:0px auto;
+}
+#result-section {
+  width:1100px;
+  height:580px;
+  background:var(--main-bg-color);
+  border-radius:10px;
+  margin-left:20px;
+  display:flex;
+  justify-content:center;
+  margin-top:35px;
+}
+#toolbar-section {
+  margin-left:-10px;
+  margin-top:35px;
+}
+#setting-section {
+  margin-left:30px;
+  margin-top:27px;
+}
+.toolbar-option-container {
+  background:var(--main-bg-color);
+  border-radius:10px;
+  margin:26.7px 5px;
+  width:60px;
+  height:60px;
+  transition:0.3s;
+}
+.toolbar-option {
+  width:50px;
+  height:50px;
+  margin:5px 5px;
+  transition:0.3s;
+}
+.toolbar-option-container:hover {
+  transform:scale(1.1);
+}
+#toolbar-interval {
+  margin-top:-27px;
+}
+#user-profile {
+  width:350px;
+  height:350px;
+  border-radius:10px;
+  margin-top:110px;
+  margin-left:30px;
+}
+#user {
+  font-family:Inter;
+  font-weight:bold;
+  font-size:14px;
+  color:white;
+  text-align:center;
+  padding-top:17px;
+  width:250px;
+  height:36px;
+  background:var(--darker-bg-color);
+  border-radius:10px;
+  margin:21px 10px;
+  padding-left:20px;
+  padding-right:20px;
+}
+#user-text-data {
+  justify-content:center;
+  display:flex;
+  margin:90px 15px;
+}
+#dark_mode {
+  display:none;
+  position:absolute;
+  margin-top:5px;
+  margin-left:2.6px;
+  transition:0.3s;
+}
+#light_mode {
+  display:block;
+  position:absolute;
+  margin-top:5px;
+  margin-left:6px;
+  transition:0.3s;
+}
+@font-face {
+  font-family:Inter;
+  src:url('../font/Inter-black.ttf');
+}

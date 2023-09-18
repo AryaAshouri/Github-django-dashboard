@@ -1,0 +1,86 @@
+* {
+  padding:0px;
+  margin:0px;
+}
+*:focus {
+  outline:none;
+}
+:root {
+  --main-bg-color:#A6E1FA;
+  --darker-bg-color:#57cdff;
+  --dark-bg-color:#0e101c;
+  --darker-dark-color:#12141f;
+}
+::-webkit-scrollbar {
+  width:0px;
+}
+::-webkit-scrollbar-track {
+  border-radius:10px;
+  background-color:none;
+}
+::placeholder {
+  color:white;
+  opacity:0.7;
+}
+a {
+  text-decoration:none;
+  color:white;
+}
+input::selection {
+  background-color: transparent;
+}
+Body {
+  background-color:black;
+  user-select:none;
+}
+#data-container {
+  margin:160px auto;
+  background:var(--main-bg-color);
+  width:460px;
+  height:300px;
+  border-radius:20px;
+}
+#first-text {
+  font-family:Inter;
+  font-weight:bold;
+  font-size:36px;
+  color:white;
+  margin:80px 51px;
+  position:absolute;
+}
+#username-input {
+  background:var(--darker-bg-color);
+  width:180px;
+  height:60px;
+  border:none;
+  border-radius:10px;
+  font-family:Inter;
+  font-weight:bold;
+  font-size:16px;
+  color:white;
+  text-align:center;
+  transition:0.3s;
+  margin-top:170px;
+  margin-left:44px;
+  opacity:0.8;
+}
+#button-input {
+  background:var(--darker-bg-color);
+  width:180px;
+  height:60px;
+  border:none;
+  border-radius:10px;
+  font-family:Inter;
+  font-weight:bold;
+  font-size:16px;
+  color:white;
+  text-align:center;
+  transition:0.3s;
+  margin-top:170px;
+  margin-left:10px;
+  opacity:0.8;
+}
+@font-face {
+  font-family:Inter;
+  src:url('../font/Inter-black.ttf');
+}

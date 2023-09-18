@@ -1,0 +1,26 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta name="viewport" content="width=device-width,height=device-height,initial-scale=1.0"/>
+        <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+        <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+        <link rel="stylesheet" href="{% static 'css/index.css' %}">
+        <link rel="icon" href="{% static 'img/icon.png' %}">
+        <title>
+            Dashboard
+        </title>
+    </head>
+    <body>
+        <form data-aos="fade-down" data-aos-duration="1000" data-aos-delay=500 id="data-container" method="POST" enctype="multipart/form-data">
+          <p id="first-text">Enter the Username</p>
+          <div id="pop-up-container">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <input autocomplete="off" type="text" id="username-input" name="username-input" placeholder="Username">
+            <button id="button-input" name="button-input">Search</button>
+          </div>
+        </form>
+    <script src="{% static 'js/index.js' %}"></script>
+    </body>
+</html>
