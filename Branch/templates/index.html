@@ -12,7 +12,32 @@
         </title>
     </head>
     <body>
-        <form data-aos="fade-down" data-aos-duration="1000" data-aos-delay=500 id="data-container" method="POST" enctype="multipart/form-data">
+        {% if theme_right_now == "dark" %}
+          <style>
+            #data-container {
+              background:var(--dark-bg-color);
+            }
+            #username-input {
+              background:var(--darker-dark-color);
+            }
+            #button-input {
+              background:var(--darker-dark-color);
+            }
+          </style>
+        {% elif theme_right_now == "light" %}
+          <style>
+            #data-container {
+              background:var(--main-bg-color);
+            }
+            #username-input {
+              background:var(--darker-bg-color);
+            }
+            #button-input {
+              background:var(--darker-bg-color);
+            }
+          </style>
+        {% endif %}
+        <form data-aos="fade-down" data-aos-duration="1000" data-aos-delay="500" id="data-container" method="POST" enctype="multipart/form-data">
           <p id="first-text">Enter the Username</p>
           <div id="pop-up-container">
             {% csrf_token %}

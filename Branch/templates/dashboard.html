@@ -11,77 +11,166 @@
             Dashboard
         </title>
     </head>
-      <div data-aos="fade-down" data-aos-duration="1000" data-aos-delay=500 id="main-container">
-        <div id="toolbar-section">
-          <div id="toolbar-interval"></div>
-          <div title="Search User" class="toolbar-option-container">
-            <a href="/"><img src="{% static 'img/search.png' %}" onclick="send_theme_to_home()" class="toolbar-option"></a>
-          </div>
-          <div title="Information" class="toolbar-option-container">
-            <img src="{% static 'img/information.png' %}" onclick="information()" class="toolbar-option">
-          </div>
-          <div title="Followers" class="toolbar-option-container">
-            <img src="{% static 'img/followers.png' %}" onclick="followers()" class="toolbar-option">
-          </div>
-          <div title="Following" class="toolbar-option-container">
-            <img src="{% static 'img/following.png' %}" onclick="following()" class="toolbar-option">
-          </div>
-          <div title="Repositories" class="toolbar-option-container">
-            <img src="{% static 'img/repositories.png' %}" onclick="repositories()" class="toolbar-option">
-          </div>
-          <div title="Organizations" class="toolbar-option-container">
-            <img src="{% static 'img/organizations.png' %}" onclick="links()" class="toolbar-option">
-          </div>
-          <div title="Login" class="toolbar-option-container">
-            <img src="{% static 'img/login.png' %}" onclick="login()" class="toolbar-option">
-          </div>
-        </div>
-        <div id="result-section">
-          <img id="user-profile" src="{{user_profile}}">
-          <div id="user-text-data">
-            <div id="first-part">
-              <p id="user">Username : {{user_username}}</p>
-              <p id="user">Name : {{user_name}}</p>
-              <p id="user">Id : {{user_id}}</p>
-              <p id="user">Type : {{user_type}}</p>
-              <p id="user">Is Admin : {{is_user_admin}}</p>
-            </div>
-            <div id="second-part">
-              <p id="user">location : {{user_location}}</p>
-              <p id="user">Hireable : {{is_user_hireable}}</p>
-              <p id="user">Company : {{user_company}}</p>
-              <p id="user">Twitter : {{user_twitter}}</p>
-              <p id="user">Email : {{user_email}}</p>
-            </div>
-          </div>
-        </div>
-        <div id="setting-section">
+    <body>
+      {% if theme_right_now == "dark" %}
+        <div data-aos="fade-down" data-aos-duration="1000" data-aos-delay="500" id="main-container">
           <div id="toolbar-section">
             <div id="toolbar-interval"></div>
-            <div title="Theme" class="toolbar-option-container" id="theme-option-container">
-              <img src="{% static 'img/light_mode.png' %}" onclick="change_mode()" class="toolbar-option" id="light_mode">
-              <img src="{% static 'img/dark_mode.png' %}" onclick="change_mode()" class="toolbar-option" id="dark_mode">
+            <div title="Search User" class="toolbar-option-container">
+              <a href="/"><img src="{% static 'img/search.png' %}" onclick="send_theme_to_home()" class="toolbar-option"></a>
             </div>
-            <div class="toolbar-option-container">
+            <div title="Information" class="toolbar-option-container">
+              <img src="{% static 'img/information.png' %}" onclick="information()" class="toolbar-option">
+            </div>
+            <div title="Followers" class="toolbar-option-container">
+              <img src="{% static 'img/followers.png' %}" onclick="followers()" class="toolbar-option">
+            </div>
+            <div title="Following" class="toolbar-option-container">
+              <img src="{% static 'img/following.png' %}" onclick="following()" class="toolbar-option">
+            </div>
+            <div title="Repositories" class="toolbar-option-container">
+              <img src="{% static 'img/repositories.png' %}" onclick="repositories()" class="toolbar-option">
+            </div>
+            <div title="Organizations" class="toolbar-option-container">
+              <img src="{% static 'img/organizations.png' %}" onclick="links()" class="toolbar-option">
+            </div>
+            <div title="Login" class="toolbar-option-container">
+              <img src="{% static 'img/login.png' %}" onclick="login()" class="toolbar-option">
+            </div>
+          </div>
+          <div id="result-section">
+            <img id="user-profile" src="{{user_profile}}">
+            <div id="user-text-data">
+              <div id="first-part">
+                <p id="user">Username : {{user_username}}</p>
+                <p id="user">Name : {{user_name}}</p>
+                <p id="user">Id : {{user_id}}</p>
+                <p id="user">Type : {{user_type}}</p>
+                <p id="user">Is Admin : {{is_user_admin}}</p>
+              </div>
+              <div id="second-part">
+                <p id="user">location : {{user_location}}</p>
+                <p id="user">Hireable : {{is_user_hireable}}</p>
+                <p id="user">Company : {{user_company}}</p>
+                <p id="user">Twitter : {{user_twitter}}</p>
+                <p id="user">Email : {{user_email}}</p>
+              </div>
+            </div>
+          </div>
+          <div id="setting-section">
+            <div id="toolbar-section">
+              <div id="toolbar-interval"></div>
+              <form id="theme-changing-form" method="POST" enctype="multipart/form-data">
+                {% csrf_token %}
+                {{ form.as_p }}
+                <button title="Theme" class="toolbar-option-container" id="theme-option-container" name="theme-option-button-dark">
+                  <input name="current-theme-label-dark" id="current-theme-label" type="text" value="Dark" disabled>
+                </button>
+              </form>
+              <div id="theme-form-interval"></div>
+              <div class="toolbar-option-container">
 
-            </div>
-            <div class="toolbar-option-container">
+              </div>
+              <div class="toolbar-option-container">
 
-            </div>
-            <div class="toolbar-option-container">
+              </div>
+              <div class="toolbar-option-container">
 
-            </div>
-            <div class="toolbar-option-container">
+              </div>
+              <div class="toolbar-option-container">
 
-            </div>
-            <div class="toolbar-option-container">
+              </div>
+              <div class="toolbar-option-container">
 
-            </div>
-            <div class="toolbar-option-container">
+              </div>
+              <div class="toolbar-option-container">
 
-            </div>
+              </div>
+          </div>
         </div>
-      </div>
+        <style>
+        :root {
+          --main-bg-color:#0e101c;
+          --darker-bg-color:#12141f;
+        }
+        </style>
+        {% elif theme_right_now == "light" %}
+          <div data-aos="fade-down" data-aos-duration="1000" data-aos-delay="500" id="main-container">
+            <div id="toolbar-section">
+              <div id="toolbar-interval"></div>
+              <div title="Search User" class="toolbar-option-container">
+                <a href="/"><img src="{% static 'img/search.png' %}" onclick="send_theme_to_home()" class="toolbar-option"></a>
+              </div>
+              <div title="Information" class="toolbar-option-container">
+                <img src="{% static 'img/information.png' %}" onclick="information()" class="toolbar-option">
+              </div>
+              <div title="Followers" class="toolbar-option-container">
+                <img src="{% static 'img/followers.png' %}" onclick="followers()" class="toolbar-option">
+              </div>
+              <div title="Following" class="toolbar-option-container">
+                <img src="{% static 'img/following.png' %}" onclick="following()" class="toolbar-option">
+              </div>
+              <div title="Repositories" class="toolbar-option-container">
+                <img src="{% static 'img/repositories.png' %}" onclick="repositories()" class="toolbar-option">
+              </div>
+              <div title="Organizations" class="toolbar-option-container">
+                <img src="{% static 'img/organizations.png' %}" onclick="links()" class="toolbar-option">
+              </div>
+              <div title="Login" class="toolbar-option-container">
+                <img src="{% static 'img/login.png' %}" onclick="login()" class="toolbar-option">
+              </div>
+            </div>
+            <div id="result-section">
+              <img id="user-profile" src="{{user_profile}}">
+              <div id="user-text-data">
+                <div id="first-part">
+                  <p id="user">Username : {{user_username}}</p>
+                  <p id="user">Name : {{user_name}}</p>
+                  <p id="user">Id : {{user_id}}</p>
+                  <p id="user">Type : {{user_type}}</p>
+                  <p id="user">Is Admin : {{is_user_admin}}</p>
+                </div>
+                <div id="second-part">
+                  <p id="user">location : {{user_location}}</p>
+                  <p id="user">Hireable : {{is_user_hireable}}</p>
+                  <p id="user">Company : {{user_company}}</p>
+                  <p id="user">Twitter : {{user_twitter}}</p>
+                  <p id="user">Email : {{user_email}}</p>
+                </div>
+              </div>
+            </div>
+            <div id="setting-section">
+              <div id="toolbar-section">
+                <div id="toolbar-interval"></div>
+                <form id="theme-changing-form" method="POST" enctype="multipart/form-data">
+                  {% csrf_token %}
+                  {{ form.as_p }}
+                  <button title="Theme" class="toolbar-option-container" id="theme-option-container" name="theme-option-button-light">
+                    <input name="current-theme-label-light" id="current-theme-label" type="text" value="Light" disabled>
+                  </button>
+                </form>
+                <div id="theme-form-interval"></div>
+                <div class="toolbar-option-container">
+
+                </div>
+                <div class="toolbar-option-container">
+
+                </div>
+                <div class="toolbar-option-container">
+
+                </div>
+                <div class="toolbar-option-container">
+
+                </div>
+                <div class="toolbar-option-container">
+
+                </div>
+                <div class="toolbar-option-container">
+
+                </div>
+            </div>
+          </div>
+      {% endif %}
     <script src="{% static 'js/dashboard.js' %}"></script>
     </body>
 </html>
