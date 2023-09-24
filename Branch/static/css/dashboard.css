@@ -10,7 +10,8 @@
   --structure-bg-light-color:#A6E1FA;
   --options-bg-light-color:#57cdff;
   --structure-bg-dark-color:#0e101c;
-  --options-bg-dark-color:#12141f;
+  --options-bg-dark-color:#10121f;
+  --options-bg-darker-color:#111421;
 }
 ::-webkit-scrollbar {
   width:0px;
@@ -86,12 +87,67 @@ Body {
   height:600px;
   margin-left:10px;
   border-radius:10px;
+  justify-content:center;
+  display:flex;
+  margin:0px 20px;
+}
+#result-section-personal-info {
+  background:var(--options-bg-dark-color);
+  width:360px;
+  height:540px;
+  border-radius:10px;
+  margin:30px 10px;
+}
+#result-user-profile {
+  width:300px;
+  height:300px;
+  border-radius:10px 10px 0 0;
+  justify-content:center;
+  display:flex;
+  margin:30px auto;
+}
+#result-personal-user-name {
+  background:var(--options-bg-darker-color);
+  width:300px;
+  height:45px;
+  font-family:Inter;
+  font-weight:bold;
+  font-size:22px;
+  color:white;
+  text-align:center;
+  padding-top:14px;
+  justify-content:center;
+  display:flex;
+  margin:-20px auto;
+}
+#result-personal-user-bio {
+  background:var(--options-bg-darker-color);
+  width:260px;
+  height:100px;
+  border-radius:0 0 10px 10px;
+  font-family:Inter;
+  font-size:12px;
+  color:white;
+  text-align:center;
+  align-items:center;
+  padding-left:20px;
+  padding-right:20px;
+  justify-content:center;
+  display:flex;
+  margin:30px auto;
+}
+#result-section-other-info {
+  background:var(--options-bg-dark-color);
+  width:680px;
+  height:540px;
+  border-radius:10px;
+  margin:30px 15px;
 }
 #setting-container {
   background:transparent;
   width:80px;
   height:600px;
-  margin-left:10px;
+  margin-left:0px;
   border-radius:10px;
 }
 .first-setting-interval {
