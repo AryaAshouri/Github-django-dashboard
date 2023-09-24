@@ -28,6 +28,11 @@ def home(request):
 	if request.method == "POST" and "button-input" in request.POST:
 		try:
 			user_name = request.POST.get("username-input")
+			foll = requests.get(f"https://api.github.com/users/{user_name}/followers").json()
+			half = int(len(foll)/2)
+			print(half)
+			followers1 = [follower["login"] for follower in foll[0:half]]
+			followers2 = [follower["login"] for follower in foll[half:]]
 			response = requests.get(f"https://api.github.com/users/{user_name}").json()
 			context = {
 				"user_username" : response["login"],
@@ -45,6 +50,8 @@ def home(request):
 				"user_twitter" : response["twitter_username"],
 				"user_email" : response["email"],
 				"theme_right_now" : "",
+				"followers_part1" : followers1,
+				"followers_part2" : followers2,
 			}
 			context.update({"theme_right_now" : last_theme })
 			return HttpResponseRedirect("dashboard")
@@ -55,16 +62,16 @@ def home(request):
 def dashboard(request):
 	global context
 	global last_theme
-	if (request.method == "POST" and "theme-option-button-light" in request.POST):
-		context.update({"theme_right_now" : "dark"})
-		Theme.objects.all().delete()
-		Theme.objects.create(theme="Dark")
-		last_theme = "dark"
 
-	elif (request.method == "POST" and "theme-option-button-dark" in request.POST):
-		context.update({"theme_right_now" : "light"})
-		Theme.objects.all().delete()
-		Theme.objects.create(theme="Light")
-		last_theme = "light"
-
+	if (request.method == "POST" and "theme-option-button-dark" in request.POST):
+		if (context["theme_right_now"] == "dark"):
+			context.update({"theme_right_now" : "light"})
+			Theme.objects.all().delete()
+			Theme.objects.create(theme="Light")
+			last_theme = "light"
+		elif (context["theme_right_now"] == "light"):
+			context.update({"theme_right_now" : "dark"})
+			Theme.objects.all().delete()
+			Theme.objects.create(theme="Dark")
+			last_theme = "dark"
 	return render(request, "dashboard.html", context)

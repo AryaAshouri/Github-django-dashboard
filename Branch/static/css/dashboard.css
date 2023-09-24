@@ -32,6 +32,7 @@ input::selection {
 Body {
   background-color:black;
   user-select:none;
+  overflow-x:hidden;
 }
 #main-container {
   justify-content:center;
@@ -47,9 +48,12 @@ Body {
   display:flex;
   justify-content:center;
   margin-top:35px;
-  transition-delay:1s;
 }
 #toolbar-section {
+  margin-left:-5px;
+  margin-top:35px;
+}
+#toolbar-section-other {
   margin-left:-10px;
   margin-top:35px;
 }
@@ -65,13 +69,17 @@ Body {
   width:60px;
   height:60px;
   transition:0.3s;
-  transition-delay:1s;
+  cursor:pointer;
+}
+.toolbar-option-container:hover {
+  transform:scale(1.05);
 }
 .toolbar-option {
   width:50px;
   height:50px;
   margin:5px 5px;
   transition:0.3s;
+  cursor:pointer;
 }
 #toolbar-interval {
   margin-top:-27px;
@@ -97,37 +105,40 @@ Body {
   margin:21px 10px;
   padding-left:20px;
   padding-right:20px;
-  transition-delay:1s;
 }
 #user-text-data {
   justify-content:center;
   display:flex;
   margin:90px 15px;
 }
-#dark_mode {
+#user-followers-data {
+  justify-content:center;
+  margin:90px 15px;
   display:none;
-  position:absolute;
-  margin-top:-25px;
-  margin-left:2.6px;
-  transition:0.3s;
-  transition-delay:1s;
 }
-#light_mode {
-  display:block;
-  position:absolute;
-  margin-top:-25px;
-  margin-left:6px;
-  transition:0.3s;
-  transition-delay:1s;
+#user-followers-data-scroll {
+  justify-content:center;
+  margin:110px 15px;
+  display:none;
+  background:transparent;
+  width:620px;
+  height:350px;
+  overflow-y: scroll;
+}
+#first-part-scroll {
+  margin-top:-20px;
+}
+#second-part-scroll {
+  margin-top:-21px;
 }
 #theme-changing-form {
-  margin-top:50px;
+  margin-top:55px;
 }
 #theme-option-container {
   margin-top:-20px;
 }
 #theme-form-interval {
-  margin-top:-26px;
+  margin-top:-27px;
 }
 #current-theme-label {
   background:transparent;
