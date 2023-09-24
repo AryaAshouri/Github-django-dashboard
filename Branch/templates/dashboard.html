@@ -1,125 +1,97 @@
 {% load static %}
 <!DOCTYPE html>
 <html>
-    <head>
-        <meta name="viewport" content="width=device-width,height=device-height,initial-scale=1.0"/>
-        <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
-        <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-        <link rel="stylesheet" href="{% static 'css/dashboard.css' %}">
-        <link rel="icon" href="{% static 'img/icon.png' %}">
-        <title>
-            Dashboard | {{user_name}}
-        </title>
-    </head>
-    <body>
-      <div data-aos="fade-down" data-aos-duration="1000" data-aos-delay="500" id="main-container">
-        <div id="toolbar-section">
-          <div id="toolbar-interval"></div>
-          <div title="Search User" class="toolbar-option-container">
-            <a href="/"><img src="{% static 'img/search.png' %}" onclick="send_theme_to_home()" class="toolbar-option"></a>
-          </div>
-          <div title="Information" class="toolbar-option-container">
-            <img onclick="show_info()" src="{% static 'img/information.png' %}" onclick="information()" class="toolbar-option">
-          </div>
-          <div title="Followers" class="toolbar-option-container">
-            <img onclick="show_followers()" src="{% static 'img/followers.png' %}" onclick="followers()" class="toolbar-option">
-          </div>
-          <div title="Following" class="toolbar-option-container">
-            <img src="{% static 'img/following.png' %}" onclick="following()" class="toolbar-option">
-          </div>
-          <div title="Repositories" class="toolbar-option-container">
-            <img src="{% static 'img/repositories.png' %}" onclick="repositories()" class="toolbar-option">
-          </div>
-          <div title="Organizations" class="toolbar-option-container">
-            <img src="{% static 'img/organizations.png' %}" onclick="links()" class="toolbar-option">
-          </div>
-          <div title="Login" class="toolbar-option-container">
-            <img src="{% static 'img/login.png' %}" onclick="login()" class="toolbar-option">
-          </div>
+  <head>
+    <meta name="viewport" content="width=device-width,height=device-height,initial-scale=1.0"/>
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <link rel="stylesheet" href="{% static 'css/dashboard.css' %}">
+    <link rel="icon" href="{% static 'img/icon.png' %}">
+    <title>
+    Dashboard | {{user_name}}
+    </title>
+  </head>
+  <body>
+    <div data-aos="fade-down" data-aos-duration="1000" data-aos-delay="500" id="main-container">
+      <div id="option-container">
+        <div class="first-option-interval"></div>
+        <div class="option-box">
+          <a href="/"><img title="Search User" class="option-img" src="{% static 'img/search.png' %}"></a>
         </div>
-        <div id="result-section">
-          <img id="user-profile" src="{{user_profile}}">
-          <div id="user-text-data">
-            <div id="first-part">
-              <p id="user">Username : {{user_username}}</p>
-              <p id="user">Name : {{user_name}}</p>
-              <p id="user">Id : {{user_id}}</p>
-              <p id="user">Type : {{user_type}}</p>
-              <p id="user">Is Admin : {{is_user_admin}}</p>
-            </div>
-            <div id="second-part">
-              <p id="user">location : {{user_location}}</p>
-              <p id="user">Hireable : {{is_user_hireable}}</p>
-              <p id="user">Company : {{user_company}}</p>
-              <p id="user">Twitter : {{user_twitter}}</p>
-              <p id="user">Email : {{user_email}}</p>
-            </div>
-          </div>
-          <div id="user-followers-data-scroll">
-            <div id="first-part-scroll">
-              {% for follower in followers_part1 %}
-                <p id="user">{{follower}}</p>
-              {% endfor %}
-            </div>
-            <div id="second-part-scroll">
-              {% for follower in followers_part2 %}
-                <p id="user">{{follower}}</p>
-              {% endfor %}
-            </div>
-          </div>
+        <div class="option-box">
+          <img title="Information" class="option-img" src="{% static 'img/information.png' %}">
         </div>
-        <div id="setting-section">
-          <div id="toolbar-section-other">
-            <div id="toolbar-interval"></div>
-            <form id="theme-changing-form" method="POST" enctype="multipart/form-data">
-              {% csrf_token %}
-              {{ form.as_p }}
-              <button title="Theme" class="toolbar-option-container" id="theme-option-container" name="theme-option-button-dark">
-                <input name="current-theme-label-dark" id="current-theme-label" type="text" value="" disabled>
-              </button>
-            </form>
-            <div id="theme-form-interval"></div>
-            <div class="toolbar-option-container">
+        <div class="option-box">
+          <img title="Followers" class="option-img" src="{% static 'img/followers.png' %}">
+        </div>
+        <div class="option-box">
+          <img title="Following" class="option-img" src="{% static 'img/following.png' %}">
+        </div>
+        <div class="option-box">
+          <img title="Repositories" class="option-img" src="{% static 'img/repositories.png' %}">
+        </div>
+        <div class="option-box">
+          <img title="Organizations" class="option-img" src="{% static 'img/organizations.png' %}">
+        </div>
+        <div class="option-box">
+          <img title="Login" class="option-img" src="{% static 'img/login.png' %}">
+        </div>
+        <form id="theme-changing-form" method="POST" enctype="multipart/form-data">
+          {% csrf_token %}
+          {{ form.as_p }}
+          <button class="theme-option-box" name="change-theme-button">
+            <img title="Theme" class="option-img" src="{% static 'img/theme.png' %}">
+          </button>
+        </form>
+      </div>
 
-            </div>
-            <div class="toolbar-option-container">
+      <div id="result-container">
+      </div>
 
-            </div>
-            <div class="toolbar-option-container">
+      <div id="setting-container">
+        <div class="first-setting-interval"></div>
+        <div class="setting-box">
 
-            </div>
-            <div class="toolbar-option-container">
+        </div>
+        <div class="setting-box">
 
-            </div>
-            <div class="toolbar-option-container">
+        </div>
+        <div class="setting-box">
 
-            </div>
-            <div class="toolbar-option-container">
+        </div>
+        <div class="setting-box">
 
-            </div>
+        </div>
+        <div class="setting-box">
+
+        </div>
+        <div class="setting-box">
+
+        </div>
+        <div class="setting-box">
+
+        </div>
+        <div class="setting-box">
+
         </div>
       </div>
-      {% if theme_right_now == "dark" %}
-        <script>
-          document.querySelector('input[name="current-theme-label-dark"]').value = "Dark"
-        </script>
-        <style>
+
+    </div>
+    {% if current_theme == "dark" %}
+      <style>
         :root {
-          --main-bg-color:#0e101c;
-          --darker-bg-color:#12141f;
+          --structure-bg-light-color:#0e101c;
+          --options-bg-light-color:#12141f;
         }
-        </style>
-      {% elif theme_right_now == "light" %}
-        <script>
-          document.querySelector('input[name="current-theme-label-dark"]').value = "Light"
-        </script>
-        <style>
+      </style>
+    {% elif current_theme == "light" %}
+      <style>
         :root {
-          --main-bg-color:#A6E1FA;
-          --darker-bg-color:#57cdff;
+          --structure-bg-light-color:#A6E1FA;
+          --options-bg-light-color:#57cdff;
         }
-        </style>
-      {% endif %}
+      </style>
+    {% endif %}
     <script src="{% static 'js/dashboard.js' %}"></script>
-    </body>
+  </body>
 </html>

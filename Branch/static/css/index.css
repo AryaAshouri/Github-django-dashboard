@@ -1,15 +1,16 @@
 * {
   padding:0px;
   margin:0px;
+  scroll-behavior:smooth;
 }
 *:focus {
   outline:none;
 }
 :root {
-  --main-bg-color:#A6E1FA;
-  --darker-bg-color:#57cdff;
-  --dark-bg-color:#0e101c;
-  --darker-dark-color:#12141f;
+  --structure-bg-light-color:#A6E1FA;
+  --options-bg-light-color:#57cdff;
+  --structure-bg-dark-color:#0e101c;
+  --options-bg-dark-color:#12141f;
 }
 ::-webkit-scrollbar {
   width:0px;
@@ -32,24 +33,26 @@ input::selection {
 Body {
   background-color:black;
   user-select:none;
+  overflow-x:hidden;
 }
-#data-container {
-  margin:160px auto;
-  background:var(--main-bg-color);
+#pop-up-structure {
+  background:var(--structure-bg-light-color);
   width:460px;
   height:300px;
   border-radius:20px;
+  margin:160px auto;
 }
-#first-text {
+#enter-username-text {
   font-family:Inter;
   font-weight:bold;
   font-size:36px;
   color:white;
-  margin:80px 51px;
-  position:absolute;
+  text-align:center;
+  margin:0px auto;
+  padding-top:85px;
 }
 #username-input {
-  background:var(--darker-bg-color);
+  background:var(--options-bg-light-color);
   width:180px;
   height:60px;
   border:none;
@@ -59,13 +62,16 @@ Body {
   font-size:16px;
   color:white;
   text-align:center;
-  transition:0.3s;
-  margin-top:170px;
-  margin-left:44px;
+  margin:35px 40px;
+  transition:0.4s;
   opacity:0.8;
 }
+#username-input:hover {
+  color: rgba(255, 255, 255, 1);
+  box-shadow: 0 0px 15px rgba(145, 92, 182, .2);
+}
 #button-input {
-  background:var(--darker-bg-color);
+  background:var(--options-bg-light-color);
   width:180px;
   height:60px;
   border:none;
@@ -75,10 +81,14 @@ Body {
   font-size:16px;
   color:white;
   text-align:center;
-  transition:0.3s;
-  margin-top:170px;
-  margin-left:10px;
+  margin:35px -25px;
+  transition:0.4s;
   opacity:0.8;
+  cursor:pointer;
+}
+#button-input:hover {
+  color: rgba(255, 255, 255, 1);
+  box-shadow: 0 0px 15px rgba(145, 92, 182, .2);
 }
 @font-face {
   font-family:Inter;
