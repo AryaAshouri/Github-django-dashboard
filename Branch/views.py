@@ -29,9 +29,16 @@ def home(request):
 		try:
 			user_name = request.POST.get("username-input")
 			response = requests.get(f"https://api.github.com/users/{user_name}").json()
-			foll = requests.get(f"https://api.github.com/users/{user_name}/followers").json()
-			followers1 = [follower["login"] for follower in foll[0:int(len(foll)/2)]]
-			followers2 = [follower["login"] for follower in foll[int(len(foll)/2):]]
+			all_followers = requests.get(f"https://api.github.com/users/{user_name}/followers").json()
+
+			first_half_followers = {}
+			for follower in all_followers[0:int(len(all_followers)/2)]:
+				first_half_followers.update({follower["login"] : follower["avatar_url"]})
+
+			second_half_followers = {}
+			for follower in all_followers[int(len(all_followers)/2):]:
+				second_half_followers.update({follower["login"] : follower["avatar_url"]})
+
 			context = {
 				"user_username" : response["login"],
 				"user_name" : response["name"],
@@ -50,12 +57,13 @@ def home(request):
 				"user_followers" : response["followers"],
 				"user_following" : response["following"],
 				"current_theme" : "",
-				"followers_part1" : followers1,
-				"followers_part2" : followers2,
+				"first_half_followers" : first_half_followers,
+				"second_half_followers" : second_half_followers,
 			}
 			context.update({"current_theme" : last_theme })
 			return HttpResponseRedirect("dashboard")
 		except:
+			print(first_half_followers)
 			return HttpResponseRedirect("/")
 	return render(request, "index.html", context)
 
@@ -64,7 +72,6 @@ def dashboard(request):
 	global last_theme
 
 	if (request.method == "POST" and "change-theme-button" in request.POST):
-		print("*****************************", context["current_theme"])
 		if (context["current_theme"] == "dark"):
 			context.update({"current_theme" : "light"})
 			Theme.objects.all().delete()

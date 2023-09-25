@@ -12,6 +12,7 @@
   --structure-bg-dark-color:#0e101c;
   --options-bg-dark-color:#10121f;
   --options-bg-darker-color:#111421;
+  --options-bg-deep-dark-color:141724;
 }
 ::-webkit-scrollbar {
   width:0px;
@@ -165,7 +166,7 @@ Body {
   width:620px;
   height:60px;
   border-radius:10px;
-  margin:20px 10px;
+  margin:20px auto;
   text-align:center;
   font-family:Inter;
   font-weight:bold;
@@ -175,8 +176,62 @@ Body {
   display:flex;
   justify-content:center;
 }
-#other-info-section-last-element {
+#info-section-last-element-interval {
   height:10px;
+}
+#followers-main-section {
+  justify-content:center;
+  margin:0px auto;
+  display:none;
+}
+#followers-first-half-container {
+  background:transparent;
+  width:300px;
+  height:500px;
+  border-radius:10px;
+  margin:20px 20px;
+}
+#followers-second-half-container {
+  background:transparent;
+  width:300px;
+  height:500px;
+  border-radius:10px;
+  margin:20px 20px;
+}
+#followers-first-half-structure {
+  background:var(--options-bg-darker-color);
+  width:280px;
+  height:340px;
+  border-radius:10px;
+  margin:20px 20px;
+}
+#follower-profile {
+  width:230px;
+  height:230px;
+  border-radius:10px 10px 0 0;
+  margin:25px 25px;
+}
+#follower-name {
+  background:var(--options-bg-deep-dark-color);
+  width:230px;
+  height:45px;
+  border:none;
+  border-radius:0 0 10px 10px;
+  font-family:Inter;
+  font-weight:bold;
+  font-size:14px;
+  color:white;
+  margin:-50px 25px;
+}
+#followers-second-half-structure {
+  background:var(--options-bg-darker-color);
+  width:280px;
+  height:340px;
+  border-radius:10px;
+  margin:20px 0px;
+}
+#follower-last-element-interval {
+  height:20px;
 }
 #setting-container {
   background:transparent;
