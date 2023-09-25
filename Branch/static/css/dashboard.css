@@ -74,7 +74,7 @@ Body {
   height:60px;
   border:none;
   border-radius:10px;
-  margin:0px 10px;
+  margin:17px 10px;
   transition:0.3s;
   cursor:pointer;
 }
@@ -142,6 +142,41 @@ Body {
   height:540px;
   border-radius:10px;
   margin:30px 15px;
+  justify-content:center;
+  display:flex;
+  overflow-y:scroll;
+}
+#result-section-other-info-interval {
+  margin-top:-150px;
+}
+#other-info-section {
+  background:transparent;
+  width:640px;
+  height:500px;
+  border-radius:10px;
+  display:inline-block;
+  margin:20px -20px;
+}
+#other-info-section-first-element {
+  margin:-10px 0px;
+}
+#other-info-box {
+  background:var(--options-bg-darker-color);
+  width:620px;
+  height:60px;
+  border-radius:10px;
+  margin:20px 10px;
+  text-align:center;
+  font-family:Inter;
+  font-weight:bold;
+  font-size:18px;
+  color:white;
+  align-items:center;
+  display:flex;
+  justify-content:center;
+}
+#other-info-section-last-element {
+  height:10px;
 }
 #setting-container {
   background:transparent;
@@ -152,6 +187,9 @@ Body {
 }
 .first-setting-interval {
   margin:-16.6px 0px;
+}
+.theme-and-setting-interval {
+  margin-top:-17.9px;
 }
 .setting-box {
   background:var(--structure-bg-light-color);

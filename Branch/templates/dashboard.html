@@ -34,15 +34,11 @@
           <img title="Organizations" class="option-img" src="{% static 'img/organizations.png' %}">
         </div>
         <div class="option-box">
+          <img title="Message" class="option-img" src="{% static 'img/message.png' %}">
+        </div>
+        <div class="option-box">
           <img title="Login" class="option-img" src="{% static 'img/login.png' %}">
         </div>
-        <form id="theme-changing-form" method="POST" enctype="multipart/form-data">
-          {% csrf_token %}
-          {{ form.as_p }}
-          <button class="theme-option-box" name="change-theme-button">
-            <img title="Theme" class="option-img" src="{% static 'img/theme.png' %}">
-          </button>
-        </form>
       </div>
 
       <div id="result-container">
@@ -74,17 +70,39 @@
           {% endif %}
         </div>
         <div id="result-section-other-info">
-
+          <div id="other-info-section">
+            <div id="other-info-section-first-element"></div>
+            <div id="other-info-box">Username : {{user_username}}</div>
+            <div id="other-info-box">Name : {{user_name}}</div>
+            <div id="other-info-box">Id : {{user_id}}</div>
+            <div id="other-info-box">Type : {{user_type}}</div>
+            <div id="other-info-box">Company : {{user_company}}</div>
+            <div id="other-info-box">Location : {{user_location}}</div>
+            <div id="other-info-box"><a href="https://{{user_blog}}">Blgo : {{user_blog}}</a></div>
+            <div id="other-info-box">Twitter : {{user_twitter}}</div>
+            <div id="other-info-box">Email : {{user_email}}</div>
+            <div id="other-info-box">Admin : {{is_user_admin}}</div>
+            <div id="other-info-box">Hireable : {{is_user_hireable}}</div>
+            <div id="other-info-box">Old age : {{user_created_at}}</div>
+            <div id="other-info-box">Followers : {{user_followers}}</div>
+            <div id="other-info-box">Following : {{user_following}}</div>
+            <div id="other-info-section-last-element"></div>
+          </div>
         </div>
       </div>
 
       <div id="setting-container">
         <div class="first-setting-interval"></div>
-        <div class="setting-box">
-
-        </div>
-        <div class="setting-box">
-
+        <form id="theme-changing-form" method="POST" enctype="multipart/form-data">
+          {% csrf_token %}
+          {{ form.as_p }}
+          <button class="theme-option-box" name="change-theme-button">
+            <img title="Theme" class="option-img" src="{% static 'img/theme.png' %}">
+          </button>
+        </form>
+        <div class="theme-and-setting-interval"></div>
+        <div class="option-box">
+          <img title="Translate" class="option-img" src="{% static 'img/translate.png' %}">
         </div>
         <div class="setting-box">
 
